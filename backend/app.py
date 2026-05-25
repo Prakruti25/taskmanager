@@ -7,10 +7,10 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
-    db.init_app(app)
-    jwt.init_app(app)
-    migrate.init_app(app, db)
+    CORS(app, resources={r"/api/*": {"origins": [
+    "http://localhost:3000",
+    "https://*.vercel.app"
+]}})
 
     from models.user import User
     from models.task import Task
