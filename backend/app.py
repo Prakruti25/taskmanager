@@ -24,11 +24,6 @@ def create_app():
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(tasks_bp, url_prefix="/api/tasks")
 
-    # Auto-run migrations on startup
-    with app.app_context():
-        from flask_migrate import upgrade
-        upgrade()
-
     return app
 
 if __name__ == "__main__":
